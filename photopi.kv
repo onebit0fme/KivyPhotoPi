@@ -1,0 +1,66 @@
+#:kivy 1.9.0
+
+<PhotoFrame>:
+    BoxLayout:
+        Image:
+            source: root.image_path
+            allow_stretch: True
+    Label:
+        size_hint: [None,None]
+        size: root.width, "100 dp"
+        text_size: self.size
+        valign: 'bottom'
+        halign: 'left'
+        pos_hint: {'x': 0, 'bottom': 0}
+        text: "Description of the image set"
+        font_size: "25 dp"
+    Label:
+        size_hint: None, None
+        size: root.width, "50 dp"
+        text_size: self.size
+        valign: 'top'
+        halign: 'right'
+        pos_hint: {'x': 0, 'top': 1}
+        text: "July 17, 2014"
+        font_size: "15 dp"
+
+<FramedImage>:
+    canvas:
+        Color:
+            rgb: (1,1,1)
+        Line:
+            points: [self.x, self.y-20, self.x+self.width, self.y-20]
+            width: 4
+        Line:
+            points: [self.x-2, self.y-20, self.x-2, self.y+self.height]
+            width: 4
+        Line:
+            points: [self.x+self.width+2, self.y-20, self.x+self.width+2, self.y+self.height]
+            width: 4
+        Line:
+            points: [self.x, self.y+self.height+2, self.x+self.width, self.y+self.height+2]
+            width: 4
+        Rectangle:
+            pos: self.x, self.y-20
+            size: self.width, 20
+    size: 800, 800 / self.image_ratio
+    Label:
+        text: "July 23, 2014"
+        pos: root.pos[0]+5, root.pos[1]+5
+        text_size: self.size
+        valign: 'bottom'
+        halign: 'left'
+        font_size: "10 dp"
+    Label:
+        text: "Vacation on Cuba 2014. Beach, ocean, and crabs"
+        # pos_hint: {'center_x': root.center_x, 'top': root.pos[1]}
+        pos: root.x, root.y-20
+        size: root.width, 20
+        valign: 'middle'
+        halign: 'center'
+        color: (0,0,0,1)
+        font_size: "12 dp"
+
+<CustomImage>:
+    # Make sure the width is proportional to image ratio (since height is the full height of parent
+    width: self.height * self.image_ratio
